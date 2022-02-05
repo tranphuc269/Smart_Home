@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>439352391599-a0u8e4fthtp0sjnb6i0hp423ba91760l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.439352391599-a0u8e4fthtp0sjnb6i0hp423ba91760l</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCU6_QajdpGp3g6sg9e0jWhN3m4Pm7Gd9Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>439352391599</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.group12.smarthome</string>
+	<key>PROJECT_ID</key>
+	<string>iot-application-5ffc1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>iot-application-5ffc1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:439352391599:ios:c1204bbb818a9b7192215a</string>
+</dict>
+</plist>
