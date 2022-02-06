@@ -2,9 +2,11 @@
 import 'dart:async';
 import 'package:animate_do/animate_do.dart';
 import 'package:api_example_app/LandingScreen/landing_screen.dart';
+import 'package:api_example_app/controller/login_controller.dart';
 import 'package:api_example_app/onboard/sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _loginController = Get.put(LoginController());
   int activeIndex = 0;
   var password = true;
   var b = Colors.black;
@@ -89,6 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                 delay: const Duration(milliseconds: 500),
                 child: TextField(
                   cursorColor: Colors.black,
+                  onChanged: (value){
+                    _loginController.email = value;
+                  },
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                     labelText: 'Email',
@@ -131,6 +137,9 @@ class _LoginPageState extends State<LoginPage> {
                 delay: const Duration(milliseconds: 600),
                 child: TextField(
                   obscureText: password,
+                  onChanged: (value){
+                    _loginController.password = value;
+                  },
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
@@ -204,11 +213,8 @@ class _LoginPageState extends State<LoginPage> {
               FadeInDown(
                 delay: const Duration(milliseconds: 800),
                 child: MaterialButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => LandingScreen()));
+                  onPressed: (){
+                    _loginController.login(context);
                   },
                   height: 45,
                   splashColor: const Color(0xFF610094),

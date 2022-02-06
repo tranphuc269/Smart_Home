@@ -408,7 +408,9 @@ class _SignInPageState extends State<SigninPage> {
                 FadeInDown(
                   delay: const Duration(milliseconds: 1100),
                   child: MaterialButton(
-                    onPressed: _registerController.register,
+                    onPressed: () {
+                      _registerController.register(context);
+                    },
                     height: 45,
                     splashColor: const Color(0xFF610094),
                     color: Colors.black,
