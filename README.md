@@ -1,5 +1,5 @@
 ## Smart Home IOT App - Flutter UI
-We created a simple and clean Smart Home application UI using Flutter.
+We created a simple and clean Smart Home application using Flutter. (Author group 12)
 
 ![Thumbnail (3)](https://raw.githubusercontent.com/tranphuc269/Smart_Home/master/assets/application/simulator_screenshot_02664AAF-1F4F-4791-9DD7-E916813B54A3.png)
 
