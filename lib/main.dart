@@ -1,9 +1,5 @@
-import 'package:api_example_app/LandingScreen/landing_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import 'controller/register_controller.dart';
 import 'onboard/start.dart';
 
 Future<void> main() async {
