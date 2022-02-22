@@ -4,13 +4,13 @@ class DeviceEntity extends BaseEntity {
   DeviceEntity(
       {this.name,
       this.value,
-      this.id,
+      this.deviceId,
       this.images,
       this.type,
       this.status,
       this.idRoom});
 
-  String id;
+  String deviceId;
   String name;
   String idRoom;
   String status;

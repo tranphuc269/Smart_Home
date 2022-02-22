@@ -3,6 +3,7 @@ import 'package:api_example_app/model/user_entity.dart';
 import 'package:api_example_app/repository/base_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
@@ -17,12 +18,14 @@ class RegisterController extends GetxController {
   }
 
   Future<void> register(BuildContext context) async {
+    SmartDialog.showLoading();
     final user = (await _auth.createUserWithEmailAndPassword(
       email: userEntity.email,
       password: userEntity.password,
     ))
         .user;
     updateUserProfile(user.uid);
+    SmartDialog.dismiss();
     Navigator.push(
         context,
         MaterialPageRoute(

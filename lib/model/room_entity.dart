@@ -5,14 +5,22 @@ class RoomEntity extends BaseEntity {
       {this.id,
       this.name,
       this.description,
-      this.code,
       this.image,
       this.idHouse});
+
+  factory RoomEntity.fromJson(Map<String, dynamic> json) {
+    return RoomEntity(
+      id: json['roomId'],
+      name: json['roomName'],
+      image: json['roomImage'],
+      description: json['des'],
+      idHouse: json['houseId'],
+    );
+  }
 
   String id;
   String name;
   String image;
   String description;
-  String code;
   String idHouse;
 }

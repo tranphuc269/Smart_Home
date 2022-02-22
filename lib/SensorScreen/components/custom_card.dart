@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../constants.dart';
+import 'package:dio/dio.dart';
 
 class CustomCard extends StatefulWidget {
   const CustomCard(
       {Key key,
-        @required this.size,
-        this.icon,
-        this.title,
-        this.statusOn,
-        this.statusOff})
+      @required this.size,
+      this.icon,
+      this.title,
+      this.statusOn,
+      this.statusOff})
       : super(key: key);
 
   final Size size;
@@ -36,7 +38,7 @@ class _CustomCardState extends State<CustomCard>
     );
 
     _animation = Tween<Alignment>(
-        begin: Alignment.bottomCenter, end: Alignment.topCenter)
+            begin: Alignment.bottomCenter, end: Alignment.topCenter)
         .animate(
       CurvedAnimation(
         parent: _animationController,
@@ -79,57 +81,63 @@ class _CustomCardState extends State<CustomCard>
                 widget.icon,
                 widget.title != "LEAKS"
                     ? AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (animation, child) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (_animationController.isCompleted) {
-                            _animationController.animateTo(20);
-                          } else {
-                            _animationController.animateTo(0);
-                          }
-                          isChecked = !isChecked;
-                        });
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.grey.shade50,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade200,
-                              blurRadius: 8,
-                              offset: Offset(3, 3),
+                        animation: _animationController,
+                        builder: (animation, child) {
+                          return GestureDetector(
+                            onTap: () async {
+                              /// device
+                              SmartDialog.showLoading(msg: 'Bật đèn');
+                              await Dio().patch(
+                                  'http://9d1c-58-186-61-3.ngrok.io/devices/3',
+                                  data: {"status": "on"});
+                              SmartDialog.dismiss();
+                              setState(() {
+                                if (_animationController.isCompleted) {
+                                  _animationController.animateTo(20);
+                                } else {
+                                  _animationController.animateTo(0);
+                                }
+                                isChecked = !isChecked;
+                              });
+                            },
+                            child: Container(
+                              height: 40,
+                              width: 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.grey.shade50,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    blurRadius: 8,
+                                    offset: Offset(3, 3),
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    offset: Offset(-3, -3),
+                                  ),
+                                ],
+                              ),
+                              child: Align(
+                                alignment: _animation.value,
+                                child: Container(
+                                  width: 15,
+                                  height: 15,
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 2, horizontal: 1),
+                                  decoration: BoxDecoration(
+                                    color: isChecked
+                                        ? Colors.grey.shade300
+                                        : kGreenColor,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
                             ),
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 5,
-                              offset: Offset(-3, -3),
-                            ),
-                          ],
-                        ),
-                        child: Align(
-                          alignment: _animation.value,
-                          child: Container(
-                            width: 15,
-                            height: 15,
-                            margin: EdgeInsets.symmetric(
-                                vertical: 2, horizontal: 1),
-                            decoration: BoxDecoration(
-                              color: isChecked
-                                  ? Colors.grey.shade300
-                                  : kGreenColor,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                )
+                          );
+                        },
+                      )
                     : Container(),
               ],
             ),

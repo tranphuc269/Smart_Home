@@ -117,7 +117,6 @@ class _SignInPageState extends State<SigninPage> {
                     onChanged: (value) {
                       _registerController.userEntity.surName = value;
                     },
-                    inputFormatters: [LengthLimitingTextInputFormatter(10)],
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       labelText: 'Họ và tên đệm',

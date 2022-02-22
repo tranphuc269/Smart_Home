@@ -9,12 +9,14 @@ class CustomCardRoom extends StatefulWidget {
       {Key key,
         @required this.size,
         this.icon,
+        this.des,
         this.title,})
       : super(key: key);
 
   final Size size;
-  final Icon icon;
+  final Widget icon;
   final String title;
+  final String des;
 
   @override
   _CustomCardStateRoom createState() => _CustomCardStateRoom();
@@ -79,7 +81,7 @@ class _CustomCardStateRoom extends State<CustomCardRoom>
             ),
             SizedBox(height: 10),
             Text(
-              widget.title,
+              widget.title ?? '',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -87,7 +89,7 @@ class _CustomCardStateRoom extends State<CustomCardRoom>
               ),
             ),
             Text(
-              '4 thiết bị khả dụng',
+              widget.des,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: kBlueColor,
